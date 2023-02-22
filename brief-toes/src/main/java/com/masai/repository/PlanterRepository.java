@@ -17,6 +17,7 @@ import jakarta.validation.constraints.Size;
 
 public interface PlanterRepository extends JpaRepository<Planter, Integer> {
 	
+	public List<Planter> findByPlanterCostBetween(double start,double end);
 
 	
 }
