@@ -1,6 +1,14 @@
 package com.masai.service;
 
-public interface CustomerService {
+import java.util.List;
 
-	    //public List<Plants>
+import com.masai.model.Plant;
+import com.masai.model.Planter;
+import com.masai.model.Seed;
+
+public interface CustomerService {
+	
+	public List<Plant> getAllPlants();
+	public List<Seed> getAllSeeds();
+	public List<Planter> getAllPlanters();
 }
