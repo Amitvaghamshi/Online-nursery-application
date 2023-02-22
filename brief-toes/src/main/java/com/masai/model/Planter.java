@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 
 import jakarta.validation.constraints.NotNull;
@@ -45,8 +45,9 @@ public class Planter {
 	@Size(min=30,max=500, message = "Planter cost is between 30 to 500")
 	private Integer planterCost;
 	
+	@OneToMany
 	Seed seed;
-	
+	@OneToMany
 	Plant plant;
 
 
