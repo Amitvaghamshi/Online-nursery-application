@@ -45,6 +45,9 @@ public class Planter {
 		@Size(min=30,max=500, message = "Planter cost is between 30 to 500")
 		private Integer planterCost;
 		
+		Seed seed;
+		
+		Plant plant;
 
 
 }
