@@ -16,11 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Seed {
 	
+	// name should have some
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer seedId;
 	
-	@NotBlank
+	@NotBlank(message="Name can not be blank")
 	private String commonName;
 	
 	@NotBlank
