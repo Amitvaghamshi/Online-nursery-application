@@ -57,6 +57,6 @@ public class Customer {
 	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
 	   private List<Orders> orders=new ArrayList<>();
 	   
-	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "cusomer_id")
+	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
 	   private List<Cart> cart_iteams=new ArrayList<>();
 }

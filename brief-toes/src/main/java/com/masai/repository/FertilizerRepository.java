@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface FertilizerRepository extends JpaRepository<Fertilizer,Integer> {
 
-    public List<Fertilizer> findByCommonName(String commonName);
+      public List<Fertilizer> findByCommonName(String commonName);
 
     public List<Fertilizer> findByType(FertilizerType fertilizerType);
 

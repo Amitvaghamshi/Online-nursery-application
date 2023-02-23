@@ -1,5 +1,6 @@
 package com.masai.exceptions;
 
+
 public class PlanterException extends Exception {
 
 	
@@ -11,5 +12,6 @@ public class PlanterException extends Exception {
 		super(message);
 	}
 }
+
 
 

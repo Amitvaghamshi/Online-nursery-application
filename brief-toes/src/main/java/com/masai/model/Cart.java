@@ -30,7 +30,7 @@ public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "orders")
 	@SequenceGenerator(name = "orders" ,sequenceName = "orders_seq" ,initialValue = 100,allocationSize = 1)
-	private Integer orderId;
+	private Integer cartId;
 	@Enumerated(EnumType.STRING)
 	private OrderType orderType;
 	@NotNull
@@ -44,6 +44,6 @@ public class Cart {
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "customer_id")
-	private Customer cusomer_id;
+	private Customer customer;
 	
 }

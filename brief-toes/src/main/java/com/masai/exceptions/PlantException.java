@@ -1,5 +1,6 @@
 package com.masai.exceptions;
 
+
 public class PlantException extends Exception {
 
 	private static final long serialVersionUID = 1L;
@@ -9,4 +10,4 @@ public PlantException(){}
 		super(message);
 	}
 
-}
+

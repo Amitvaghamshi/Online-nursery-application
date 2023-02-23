@@ -1,5 +1,6 @@
 package com.masai.exceptions;
 
+
 public class SeedException extends Exception {
 
 	public SeedException() {
@@ -9,5 +10,6 @@ public class SeedException extends Exception {
 		// TODO Auto-generated constructor stub
 		super(message);
 	}
+
 
 }

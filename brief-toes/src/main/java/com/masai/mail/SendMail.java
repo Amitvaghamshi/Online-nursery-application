@@ -14,10 +14,12 @@ import jakarta.mail.internet.MimeMultipart;
 public class SendMail {
 
 	
-	 public static boolean sendEmail(String to, String from, String subject, String text) {
+	 public static boolean sendEmail(String to, String from, String subject, String text,File file) {
 	        boolean flag = false;
 
 	        //logic
+	        
+	        
 	        //smtp properties
 	        Properties properties = new Properties();
 	        properties.put("mail.smtp.auth", true);
@@ -38,34 +40,50 @@ public class SendMail {
 	        		return new PasswordAuthentication(username, password);
 	        	}
 			});
+	        
 	       
+	        //  code for sending File
 	        MimeMultipart mimemulti=new MimeMultipart();
-	        
-	        MimeBodyPart textmime=new MimeBodyPart();
-	        MimeBodyPart filemime=new MimeBodyPart();
-	        
-	        File file=new File(password);
+           try {
+        	   
+   	          MimeBodyPart textmime=new MimeBodyPart();
+   	          MimeBodyPart filemime=new MimeBodyPart();
+   	        
+   	             ///  File file=new File("amit.txt");
+   	          
+   	            filemime.attachFile(file);
+       	        textmime.setText(text);
+       	
+            	mimemulti.addBodyPart(filemime);
+            	mimemulti.addBodyPart(textmime);
+				
+			} catch (Exception e) {
+			     e.printStackTrace();
+			}
+           
+           //  sending file code ended and 
 
 	        try {
 	        	
-	        	
-	        	
-
 	            Message message = new MimeMessage(session);
 	            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 	            message.setFrom(new InternetAddress(from));
 	            message.setSubject(subject);
 	            message.setText(text);
+	            message.setContent(mimemulti);   // push mime obj  
+	            
 	            Transport.send(message);
+	            
+	            
 	            flag = true;
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
-
 
 	        return flag;
 	    }
 
 	}
 	
+
 

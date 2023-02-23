@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -39,6 +40,9 @@ public class Orders {
 	private Integer cost;
 	private final LocalDateTime timeStamp=LocalDateTime.now();
 	private String paymentType;
+	private Integer totalCost;
+	@Embedded
+	private Address address;
 	
 	@ManyToOne
 	@JsonIgnore
