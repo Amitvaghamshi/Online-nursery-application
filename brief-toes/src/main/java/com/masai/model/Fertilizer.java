@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Fertilizer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer fertiliserId;
+    private Integer fertilizerId;
 
     @NotBlank
     private String commonName;
