@@ -11,6 +11,7 @@ import com.masai.model.Seed;
 
 public interface CustomerService {
 	
+
 	public List<Plant> getAllPlants() throws PlantException;
 	public List<Seed> getAllSeeds() throws SeedException;
 	public List<Planter> getAllPlanters() throws PlanterException;
@@ -18,4 +19,6 @@ public interface CustomerService {
 	public List<Planter> getSortedPlanterByHeightOrCapacity(Integer pagesize, Integer pageNo, String sortby) throws PlanterException;
 	public List<Seed> getSortedSeedByBloomOrWater(Integer pagesize, Integer pageNo, String sortby) throws SeedException;
 	
+
+
 }

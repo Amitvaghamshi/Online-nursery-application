@@ -68,4 +68,13 @@ public class GlobalExceptionHandler {
 		   md.setDetails(wr.getDescription(false));
 		   return new ResponseEntity<>(md,HttpStatus.BAD_REQUEST);
 	   }
+
+		@ExceptionHandler(FertilizerNotFoundException.class)
+		public ResponseEntity<MyErrorDetails>  fertilizerExceptionHandler(FertilizerNotFoundException ex,WebRequest wr) {
+
+			MyErrorDetails md=new MyErrorDetails();
+			md.setMessage(ex.getMessage());
+			md.setDetails(wr.getDescription(false));
+			return new ResponseEntity<>(md,HttpStatus.NOT_FOUND);
+		}
 }
