@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface FertilizerRepository extends JpaRepository<Fertilizer,Integer> {
 
-    public List<Fertilizer> findByCommonName(String commonName);
+      public List<Fertilizer> findByCommonName(String commonName);
 
 }

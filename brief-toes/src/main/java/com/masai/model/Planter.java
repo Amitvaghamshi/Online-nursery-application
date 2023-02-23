@@ -45,12 +45,12 @@ public class Planter {
 	@Size(min=30,max=500, message = "Planter cost is between 30 to 500")
 	private Integer planterCost;
 	
-	@OneToMany
-	Seed seed;
-	@OneToMany
-	Plant plant;
-	@OneToMany
-	Fertilizer fertilizer;
+//	@OneToMany
+//	Seed seed;
+//	@OneToMany
+//	Plant plant;
+//	@OneToMany
+//	Fertilizer fertilizer;
 
 
 }
