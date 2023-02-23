@@ -30,7 +30,7 @@ public class Fertilizer {
     private String description;
 
     @Min(value = 10, message = "Fertilizer quantity can not be less than 10")
-    private double quantityPerPacket;
+    private Double quantityPerPacket;
 
     @Min(value = 0, message = "Fertilizer's stock can't be negative")
     private Integer fertilizerStock;
