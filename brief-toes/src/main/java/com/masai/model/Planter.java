@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 public class Planter {
 	
@@ -49,7 +49,8 @@ public class Planter {
 	Seed seed;
 	@OneToMany
 	Plant plant;
-
+	@OneToMany
+	Fertilizer fertilizer;
 
 
 }
