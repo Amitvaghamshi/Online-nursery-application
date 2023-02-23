@@ -11,4 +11,5 @@ public interface CustomerService {
 	public List<Plant> getAllPlants();
 	public List<Seed> getAllSeeds();
 	public List<Planter> getAllPlanters();
+
 }

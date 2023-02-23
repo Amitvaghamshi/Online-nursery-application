@@ -19,6 +19,8 @@ import jakarta.validation.constraints.Size;
 @Repository
 public interface PlanterRepository extends JpaRepository<Planter, Integer> {
 	
+	public List<Planter> findByPlanterShape(String planterShape);
+	
 	public List<Planter> findByPlanterCostBetween(double start,double end);
 
 	
