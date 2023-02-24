@@ -49,8 +49,7 @@ public class Planter {
 //	Seed seed;
 //	@OneToMany
 //	Plant plant;
-//	@OneToMany
-//	Fertilizer fertilizer;
+	
 
 
 }
