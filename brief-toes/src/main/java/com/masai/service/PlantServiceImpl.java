@@ -1,8 +1,8 @@
 package com.masai.service;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +37,7 @@ public class PlantServiceImpl implements PlantService {
 		Optional<Plant> found = plantRepo.findById(plantId);	
 		
 		if(found.isPresent()) {
-			return plantDAO.save(plant);
+			return plantRepo.save(plant);
 		}
 		else
 			throw  new PlantException("Cannot Update, No such Plant present ");			

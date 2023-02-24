@@ -13,13 +13,20 @@ import com.masai.mail.SendMail;
 import com.masai.model.Cart;
 import com.masai.model.Customer;
 import com.masai.model.Orders;
+import com.masai.repository.CartRepository;
 import com.masai.repository.CustomerRepository;
+import com.masai.repository.OrderRepository;
 
 @Service
 public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private CartRepository cartRepository;
+	
+	@Autowired OrderRepository orderrepository;
 	
 
 	@Override
@@ -33,21 +40,24 @@ public class OrderServiceImpl implements OrderService{
 		
 		Customer customer=customeropt.get();
 		
-        Integer orderId=cart.getCartId();
+        Integer cartId=cart.getCartId();
         
         Cart actcart=null;
 		
 		for(int i=0;i<customer.getCart_iteams().size();i++){
-			    if(customer.getCart_iteams().get(i).getCartId()==orderId){
+			    if(customer.getCart_iteams().get(i).getCartId().equals(cartId)){
 			    	actcart=customer.getCart_iteams().get(i);
 			    	customer.getCart_iteams().remove(i);
 			    }
 		}
+	
+		
+		cartRepository.delete(actcart);
 		
 		Orders order=new Orders();
 		
 		 order.setCost(cart.getCost());
-		 order.setAddress(customer.getAddresses().get(0));
+		// order.setAddress(customer.getAddresses());
 		 order.setQuantity(cart.getQuantity());
 		 order.setOrderType(cart.getOrderType());
 		 order.setTotalCost(cart.getCost()*cart.getQuantity());
@@ -57,36 +67,36 @@ public class OrderServiceImpl implements OrderService{
 		order.setCustomer(customer);
 		customer.getOrders().add(order);
 		
+		
 		customerRepository.save(customer);
 		
 		
 		try {
 			
-			File f=new File("amit.txt");
+			File f=new File("orderDetails.txt");
 			
 			PrintWriter printwriter=new PrintWriter(f);
-			printwriter.println( customer.getCustomerName() +" Thank you for the Order /n" );
+			printwriter.println( customer.getCustomerName() +" Thank you for the Order " );
 			printwriter.println("This is your Order Details ");
 			printwriter.println("-----------------------------");
 			printwriter.println("Order Type : " +order.getOrderType());
 			printwriter.println("Cost :" +order.getCost());
 			printwriter.println("Total Quantity :" + order.getQuantity());
-			printwriter.println("Total Cost :"+order.getCost());
-			printwriter.println("Payment Type :" +order.getAddress());
+			printwriter.println("Total Cost :"+order.getTotalCost());
+			printwriter.println("Payment Type :" +order.getPaymentType());
 			printwriter.println("Address :"+order.getAddress());
-		
+		    
+			printwriter.flush();
+			printwriter.close();
 			
-			SendMail.sendEmail("amitvaghamshi9@gmail.com", customer.getCustomerEmail(), "Order Placed SucessFully", customer.getCustomerName(),f);
+			boolean ms= SendMail.sendEmail( customer.getCustomerEmail(),"amitvaghamshi123@gmail.com", "Order Placed SucessFully", "Thank you for shopping at NurseryNow !",f);
+			System.out.println(ms);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		
-		
-		return order;
-		
-		
+		return   orderrepository.save(order);
 		
 	}
 
