@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -41,9 +42,9 @@ public class Cart {
 	private Integer cost;
 	private final LocalDateTime timeStamp=LocalDateTime.now();
 	
-	@ManyToOne
+	@ManyToOne()
 	@JsonIgnore
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private Customer customer_cart;
 	
 }

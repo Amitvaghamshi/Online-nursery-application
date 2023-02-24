@@ -93,7 +93,7 @@ public class FertilizerServiceImpl implements FertilizerService {
 
     @Override
     public List<Fertilizer> viewFertilizerByType(FertilizerType fertilizerType) throws FertilizerNotFoundException {
-        List<Fertilizer> list=fRepo.findByType(fertilizerType);
+        List<Fertilizer> list=fRepo.findByFertilizerType(fertilizerType);
         if(list.isEmpty()){
             throw new FertilizerNotFoundException("No such Fertilizer exists");
         }else {

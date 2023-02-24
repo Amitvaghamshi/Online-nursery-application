@@ -21,11 +21,13 @@ public class CartServiceImpl implements CartSevice{
 	
 	@Autowired
 	private CartRepository cartRepository;
+	
 
 	@Override
 	public Cart addtoCart(Integer customerId,Cart cart) throws CartException ,CustomerException{
 		
 		Optional<Customer> customeropt=customerRepository.findById(customerId);
+		
 		
 		if(!customeropt.isPresent()) {
 			 throw new CustomerException("Customer Not found with id :"+customerId);
@@ -33,19 +35,16 @@ public class CartServiceImpl implements CartSevice{
 		
 		Customer customer=customeropt.get();
 		customer.getCart_iteams().add(cart);
-		cart.setCustomer(customer);
+		cart.setCustomer_cart(customer);
 		
-		customerRepository.save(customer);
-		
-		return cart;
+		return cartRepository.save(cart);
 	}
-	
 	
 
 	@Override
 	public Cart removeFromCart(Integer customerId, Integer cartId) throws CartException, CustomerException {
 		
-Optional<Customer> customeropt=customerRepository.findById(customerId);
+        Optional<Customer> customeropt=customerRepository.findById(customerId);
 		
 		if(!customeropt.isPresent()) {
 			 throw new CustomerException("Customer Not found with id :"+customerId);
@@ -56,13 +55,18 @@ Optional<Customer> customeropt=customerRepository.findById(customerId);
 		Cart cart=null;
 		
 		for(int i=0;i<customer.getCart_iteams().size();i++) {
-			    if(customer.getCart_iteams().get(i).getCartId()==cartId){
+			
+			    if(customer.getCart_iteams().get(i).getCartId().equals(cartId)){
+			    	System.out.println(customer.getCart_iteams().get(i).getCartId() +" "+cartId);
 			    	cart=customer.getCart_iteams().get(i);
 			    	customer.getCart_iteams().remove(i);
 			    }
 		}
+		
+		cartRepository.delete(cart);
+		
 		if(cart==null) {
-			throw new CartException("Cart Iteam not Found");
+			throw new CartException("Cart Iteam not Found with id :"+cartId);
 		}
 		
 		customerRepository.save(customer);
@@ -71,11 +75,5 @@ Optional<Customer> customeropt=customerRepository.findById(customerId);
 		
 	}
 	
-	
-	
-	
-
-	
-
 	
 }

@@ -6,23 +6,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.exceptions.CartException;
+import com.masai.exceptions.CustomerException;
+import com.masai.exceptions.OrderException;
 import com.masai.exceptions.PlantException;
 import com.masai.exceptions.PlanterException;
 import com.masai.exceptions.SeedException;
+import com.masai.model.Cart;
+import com.masai.model.Orders;
 import com.masai.model.Plant;
 import com.masai.model.Planter;
 import com.masai.model.Seed;
+import com.masai.service.CartServiceImpl;
 import com.masai.service.CustomerServiceImpl;
+import com.masai.service.OrderServiceImpl;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class CustomerController {
 	
 	@Autowired
 	private CustomerServiceImpl costomerController;
+	
+	@Autowired
+	private CartServiceImpl cartcotroller;
+	
+	@Autowired
+	private OrderServiceImpl ordercontroller;
 
 	   @GetMapping(value = "/plants",produces = MediaType.APPLICATION_JSON_VALUE)
 	   public ResponseEntity<List<Plant>> getAllplantsHandler() throws PlantException{
@@ -55,10 +74,37 @@ public class CustomerController {
 		   return new ResponseEntity<>(seeds,HttpStatus.OK);
 	   }
 	   
-	   @GetMapping(value = "/planters")
+	   @GetMapping(value = "/seeds")
 	   public ResponseEntity<List<Seed>> getSortedSeedByBloomOrWaterHandler(@RequestParam("pagesize") Integer pagesize,@RequestParam("pageno") Integer pageNo,@RequestParam("sortby") String sortby) throws SeedException{
 		   List<Seed> plants=costomerController.getSortedSeedByBloomOrWater(pagesize, pageNo, sortby);
 		   return new ResponseEntity<>(plants,HttpStatus.OK);
+	   }
+	   
+	   
+	   //   Cart service
+	   
+	   @PostMapping(value =  "/carts/{id}" ,consumes = MediaType.APPLICATION_JSON_VALUE)
+	   public ResponseEntity<Cart> addtoCartHandler(@Valid @RequestBody Cart cart, @PathVariable("id") Integer id) throws CartException, CustomerException{
+		     Cart ct=cartcotroller.addtoCart(id, cart);
+		   
+		    return new ResponseEntity<>(ct,HttpStatus.CREATED);
+	   }
+	   
+	   
+	   @DeleteMapping("/carts/{customerId}/{cartId}")
+	   public ResponseEntity<Cart>  removeFromCartHandler(@PathVariable("customerId") Integer customerId, @PathVariable("cartId") Integer cartId) throws CartException, CustomerException{
+		   Cart ct=cartcotroller.removeFromCart(customerId, cartId);
+		   return new ResponseEntity<>(ct,HttpStatus.ACCEPTED);
+	   }
+	   
+
+
+	   @PostMapping("/orders")
+	   public ResponseEntity<Orders>  createOrderHandler(@RequestBody Cart cart ,@RequestParam("cusid")  Integer customerId,@RequestParam("payment")  String payment) throws CustomerException, OrderException {
+		   
+		   Orders order=ordercontroller.createOrder(cart, customerId, payment);
+		   return new ResponseEntity<>(order,HttpStatus.ACCEPTED);
+		      
 	   }
 	   
 }

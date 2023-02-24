@@ -3,6 +3,8 @@ package com.masai.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
@@ -25,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 public class Customer {
 
@@ -52,11 +55,13 @@ public class Customer {
 	   @Embedded
 	   @ElementCollection
 	   @JoinTable(name = "customer_addresses",joinColumns = @JoinColumn(columnDefinition = "customer_id"))
-	   private List<Address> addresses;
+	   private List<Address> addresses=new ArrayList<>();
 	   
 	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
-	   private List<Orders> orders=new ArrayList<>();
+	   private List<Orders> orders=new ArrayList<Orders>();
 	   
-	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
-	   private List<Cart> cart_iteams=new ArrayList<>();
+	   @JsonIgnore
+	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer_cart")
+	   private List<Cart> cart_iteams=new ArrayList<Cart>();
+	   
 }

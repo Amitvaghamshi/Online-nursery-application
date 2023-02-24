@@ -1,0 +1,9 @@
+Amit Vaghamshi Thank you for the Order 
+This is your Order Details 
+-----------------------------
+Order Type : PLANTERS
+Cost :12
+Total Quantity :10
+Total Cost :120
+Payment Type :paytm
+Address :null
