@@ -51,6 +51,27 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+	<!---	mail dependencies  -->
+		
+		<!-- https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api -->
+        <dependency>
+            <groupId>jakarta.mail</groupId>
+            <artifactId>jakarta.mail-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+           <groupId>org.eclipse.angus</groupId>
+           <artifactId>angus-mail</artifactId>
+          <version>2.0.1</version>
+       </dependency>
+       <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.0.2</version>
+</dependency>
+
 	</dependencies>
 
 	<build>

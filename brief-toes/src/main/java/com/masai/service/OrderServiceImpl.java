@@ -2,6 +2,7 @@ package com.masai.service;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,8 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private CartRepository cartRepository;
 	
-	@Autowired OrderRepository orderrepository;
+	@Autowired 
+	OrderRepository orderrepository;
 	
 
 	@Override
@@ -99,5 +101,66 @@ public class OrderServiceImpl implements OrderService{
 		return   orderrepository.save(order);
 		
 	}
+	
+	
+	//update order
+		@Override
+		public Orders updateOrder(Orders order) throws OrderException {
+			
+			Orders existingOrder = orderrepository.findById(order.getOrderId()).get();
+			
+			if(existingOrder==null) {
+				throw new OrderException("Order not found with id :"+order.getOrderId());
+			}
+			
+			
+			existingOrder.setCost(order.getCost());
+			existingOrder.setCustomer(order.getCustomer());
+			existingOrder.setQuantity(order.getQuantity());
+			existingOrder.setPaymentType(order.getPaymentType());
+			existingOrder.setOrderType(order.getOrderType());
+			
+			return existingOrder;
+		}
+
+		//delete order
+		@Override
+		public Orders deleteOrder(Integer orderId) throws OrderException {
+		    
+			Orders existingOrder = orderrepository.findById(orderId).get();
+			
+			if(existingOrder == null) {
+				throw new OrderException("Order not found with orderId :"+orderId);
+			}
+			
+			orderrepository.delete(existingOrder);
+			return existingOrder;
+		}
+
+		//view order by id
+		@Override
+		public Orders viewOrder(Integer orderId) throws OrderException {
+			
+	        Orders existingOrder = orderrepository.findById(orderId).get();
+			
+			if(existingOrder == null) {
+				throw new OrderException("Order not found with orderId :"+orderId);
+			}
+			
+		
+			return existingOrder;
+		}
+
+		//view all order
+		@Override
+		public List<Orders> viewAllOrder() throws OrderException {
+
+	        List<Orders> orders = orderrepository.findAll();
+	        
+	        if(orders.isEmpty()) throw new OrderException("order not found");
+	        
+			return  orders;
+		}
+
 
 }
