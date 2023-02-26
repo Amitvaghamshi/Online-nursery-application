@@ -23,4 +23,5 @@ The Role of a Customer is:
 2. Customer should be able to buy order desired plants, seeds, planters.
 
 # Flow Chart
-![Flow Chart](https://user-images.githubusercontent.com/70317048/221398553-0416e539-cc7c-45be-adff-83136eb46f1f.png)
+![FlowChart](https://user-images.githubusercontent.com/70317048/221420678-15d28e2b-e437-471f-9d70-2cf0a22c4938.png)
+
