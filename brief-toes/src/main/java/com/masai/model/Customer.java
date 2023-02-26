@@ -39,7 +39,7 @@ public class Customer {
 	   @NotNull
 	   private String customerName;
 	   @NotNull
-	   @Pattern(regexp = "^[6-9]{1}[0-9]{1}" , message = "phone number must be of 10 num")
+	   @Pattern(regexp = "^[6-9]{1}[0-9]{9}" , message = "phone number must be of 10 num")
 	   private String phone;
 	   @NotNull
 	   @NotNull(message = "email  can not be null")

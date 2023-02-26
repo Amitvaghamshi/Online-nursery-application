@@ -20,47 +20,41 @@ public class FertilizerController {
     @Autowired
     private FertilizerService fertilizerService;
 
-    @PostMapping("/{adminID}/add")
-    public ResponseEntity<Fertilizer> saveNewFertilizer(@Valid @RequestBody Fertilizer fertilizer, @PathVariable("adminID") Integer adminID)throws AdminException, FertilizerNotFoundException {
+    @PostMapping("/add")
+    public ResponseEntity<Fertilizer> saveNewFertilizer(@Valid @RequestBody Fertilizer fertilizer)throws AdminException, FertilizerNotFoundException {
         Fertilizer savedFertilizer = null;
-        if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
+       
             savedFertilizer = fertilizerService.addFertilizer(fertilizer);
-        else
-            throw new AdminException("You are not an admin");
+      
 
         return new ResponseEntity<Fertilizer>(savedFertilizer, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{adminID}/update")
-    public ResponseEntity<Fertilizer> updateSeed(@Valid @RequestBody Fertilizer fertilizer, @PathVariable Integer adminID) throws AdminException, FertilizerNotFoundException {
+    @PutMapping("/update")
+    public ResponseEntity<Fertilizer> updateFertilizer(@Valid @RequestBody Fertilizer fertilizer) throws AdminException, FertilizerNotFoundException {
         Fertilizer updatedFertilizer = null;
-        if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
+    
             updatedFertilizer = fertilizerService.updateFertilizer(fertilizer);
-        else
-            throw new AdminException("You are not an admin");
+      
         return new ResponseEntity<Fertilizer>(updatedFertilizer, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{adminID}/delete/{fertilizerId}")
-    public ResponseEntity<Fertilizer> deleteFertilizer(@PathVariable Integer fertilizerId, @PathVariable Integer adminID) throws AdminException,FertilizerNotFoundException{
+    @DeleteMapping("/delete/{fertilizerId}")
+    public ResponseEntity<Fertilizer> deleteFertilizer(@PathVariable Integer fertilizerId) throws AdminException,FertilizerNotFoundException{
 
         Fertilizer deletedFertilizer = null;
 
-        if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
             deletedFertilizer = fertilizerService.deleteFertilizerById(fertilizerId);
-        else
-            throw new AdminException("You are not an admin");
+     
         return new ResponseEntity<Fertilizer>(deletedFertilizer, HttpStatus.OK);
     }
 
-    @PutMapping("admin/setFertilizerPrice/{id}/{price}/{adminId}")
-    public ResponseEntity<Fertilizer> setFertilizerPriceByFertilizerIdHandler(@PathVariable Integer fertilizerId, @PathVariable Integer newPrice, @PathVariable Integer adminID) throws AdminException,FertilizerNotFoundException {
+    @PutMapping("admin/setFertilizerPrice/{id}/{price}")
+    public ResponseEntity<Fertilizer> setFertilizerPriceByFertilizerIdHandler(@PathVariable Integer fertilizerId, @PathVariable Integer newPrice) throws AdminException,FertilizerNotFoundException {
         Fertilizer fertilizerPrice = null;
 
-        if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
             fertilizerPrice = fertilizerService.changePriceOfFertilizer(fertilizerId,newPrice);
-        else
-            throw new AdminException("You are not an admin");
+     
         return new ResponseEntity<Fertilizer>(fertilizerPrice, HttpStatus.OK);
     }
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,6 @@ import com.masai.model.Planter;
 
 import com.masai.service.PlanterService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
@@ -31,45 +31,28 @@ public class PlanterController {
 		private PlanterService planterService;
 		
 		
-		@PostMapping("/{adminID}/add")
-		public ResponseEntity<Planter> saveNewPlanter(@Valid @RequestBody Planter planter,@PathVariable Integer adminID) throws PlanterException{
+		@PostMapping("/add")
+		public ResponseEntity<Planter> saveNewPlanter(@Valid @RequestBody Planter planter) throws PlanterException{
 			
-			Planter savedPlanter = null;
-			
-			if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
-			savedPlanter = planterService.addPlanter(planter);
-			
-			else
-			throw new PlanterException("You are not an admin");
-			
+			Planter savedPlanter = planterService.addPlanter(planter);	
 			return new ResponseEntity<Planter>(savedPlanter, HttpStatus.CREATED);
 		}
 		
 		
-		@DeleteMapping("/{adminID}/delete/{planterId}")
-		public ResponseEntity<Planter> deletePlanter(@PathVariable Integer planterId,@PathVariable Integer adminID) throws PlanterException{
+		@DeleteMapping("/delete/{planterId}")
+		public ResponseEntity<Planter> deletePlanter(@PathVariable Integer planterId) throws PlanterException{
 
-			Planter deletedPlanter = null;
+			Planter deletedPlanter =planterService.deletePlanter(planterId);
 			
-			if(adminID==100||adminID==200||adminID==300||adminID==400)
-			deletedPlanter = planterService.deletePlanter(planterId);
-			
-			else
-			throw new PlanterException("You are not an admin");
 
 			return new ResponseEntity<Planter>(deletedPlanter, HttpStatus.OK);
 		}
 		
-		@PutMapping("/{adminID}/update")
-		public ResponseEntity<Planter> updatePlanter(@RequestBody Planter planter,@PathVariable Integer adminID)throws PlanterException{
+		@PutMapping("/update")
+		public ResponseEntity<Planter> updatePlanter(@RequestBody Planter planter)throws PlanterException{
 
-			Planter updatedPlanter = null;
+			Planter updatedPlanter = planterService.updatePlanter(planter);
 			
-			if(adminID==100||adminID==200||adminID==300||adminID==400)
-			updatedPlanter = planterService.updatePlanter(planter);
-			
-			else
-			throw new PlanterException("You are not an admin");
 			
 			return new ResponseEntity<Planter>(updatedPlanter, HttpStatus.CREATED);
 		}

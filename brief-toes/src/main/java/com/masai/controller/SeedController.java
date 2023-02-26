@@ -39,42 +39,32 @@ public class SeedController {
 		
 	
 	@PostMapping("/add")
-	public ResponseEntity<Seed> saveNewSeed(@Valid @RequestBody Seed seed)
-			throws AdminException,SeedException{
+	public ResponseEntity<Seed> saveNewSeed(@Valid @RequestBody Seed seed)throws AdminException,SeedException{
 		
-		Seed savedSeed =seedService.addSeed(seed);
-				
+		Seed savedSeed = seedService.addSeed(seed);
+		
 		return new ResponseEntity<Seed>(savedSeed, HttpStatus.CREATED);
 	}
 	
 	
-	@DeleteMapping("/{adminID}/delete/{seedId}")
-	public ResponseEntity<Seed> deleteSeed(@PathVariable Integer seedId,
-			@PathVariable Integer adminID)
+	@DeleteMapping("/delete/{seedId}")
+	public ResponseEntity<Seed> deleteSeed(@PathVariable Integer seedId)
 			throws AdminException,SeedException{
 		
 		Seed deletedSeed = null;
-		
-		if(adminID==1111||adminID==2222||adminID==3333||adminID==4444) 
+	
 		deletedSeed = seedService.deleteSeed(seedId);
 		
-		else
-		throw new AdminException("You are not an admin");	
-
 		return new ResponseEntity<Seed>(deletedSeed, HttpStatus.OK);
 	}
-	@PutMapping("/{adminID}/update")
-	public ResponseEntity<Seed> updateSeed(@Valid @RequestBody Seed seed
-			,@PathVariable Integer adminID)
+	@PutMapping("/update")
+	public ResponseEntity<Seed> updateSeed(@Valid @RequestBody Seed seed)
 			throws AdminException,SeedException{
 		
 		Seed updatedSeed = null;
 		
-		if(adminID==1111||adminID==2222||adminID==3333||adminID==4444) 
 		updatedSeed = seedService.updateSeed(seed);
 		
-		else
-		throw new AdminException("You are not an admin");	
 
 		return new ResponseEntity<Seed>(updatedSeed, HttpStatus.CREATED);
 	}

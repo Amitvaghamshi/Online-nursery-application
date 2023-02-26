@@ -50,7 +50,7 @@ public class Plant {
 	private String plantDescription;
 	
 	
-	@Min(value = 0, message = "Plant stock cannnot be negative")
+	@Min(value = 3, message = "Plant stock cannnot be negative")
 	private Integer plantStock;
 	
 	@Min(value = 1, message = "Plant height cannot be zero")
