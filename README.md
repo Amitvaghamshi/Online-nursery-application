@@ -20,7 +20,7 @@ The Role of Administrator is:
 
 The Role of a Customer is: 
 1. Customer should be able to view the list of Plants , Seeds , Planters.
-2. Customer should be able to buy order desired plants, seeds, planters .
+2. Customer should be able to buy order desired plants, seeds, planters.
 
 # Flow Chart
 ![Flow Chart](https://user-images.githubusercontent.com/70317048/221398553-0416e539-cc7c-45be-adff-83136eb46f1f.png)
