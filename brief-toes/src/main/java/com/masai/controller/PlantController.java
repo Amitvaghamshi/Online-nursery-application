@@ -37,15 +37,11 @@ public class PlantController {
 	
 	
 	
-	@PostMapping("/{adminID}/add")
-	public ResponseEntity<Plant> saveNewPlant(@Valid @RequestBody Plant plant, @PathVariable("adminID") Integer adminID)throws AdminException,PlantException{
+	@PostMapping("/add")
+	public ResponseEntity<Plant> saveNewPlant(@Valid @RequestBody Plant plant)throws AdminException,PlantException{
 		Plant savedPlant = null;
 		
-		if(adminID==1111||adminID==2222||adminID==3333||adminID==4444) 
 		savedPlant = plantService.addPlant(plant);
-		
-		else
-		throw new AdminException("You are not an admin");
 		
 		
 		return new ResponseEntity<Plant>(savedPlant, HttpStatus.CREATED);
@@ -53,33 +49,26 @@ public class PlantController {
 	}
 	
 	
-	@DeleteMapping("/{adminID}/delete/{plantId}")
-	public ResponseEntity<Plant> deletePlant(@PathVariable Integer plantId,
-			@PathVariable Integer adminID)
+	@DeleteMapping("/delete/{plantId}")
+	public ResponseEntity<Plant> deletePlant(@PathVariable Integer plantId)
 			throws AdminException,PlantException{
 
 		Plant deletedPlant=null;
 		
-		if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
 		deletedPlant = plantService.deletePlant(plantId);
-			
-		else
-		throw new AdminException("You are not an admin");
+	
 
 		return new ResponseEntity<Plant>(deletedPlant, HttpStatus.OK);
 	}
 	
-	@PutMapping("/{adminID}/update")
-	public ResponseEntity<Plant> updatePlant(@RequestBody Plant plant
-			,@PathVariable Integer adminID)
+	@PutMapping("/update")
+	public ResponseEntity<Plant> updatePlant(@RequestBody Plant plant)
 			throws AdminException,PlantException{
 		Plant updatedPlant= null;
 		
-		if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
 		updatedPlant = plantService.updatePlant(plant);
 			
-		else
-		throw new AdminException("You are not an admin");		
+			
 
 		return new ResponseEntity<Plant>(updatedPlant, HttpStatus.CREATED);
 	}

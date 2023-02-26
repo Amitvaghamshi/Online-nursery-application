@@ -42,7 +42,7 @@ public class Planter {
 	@Min(value=1 , message = "Planter stock should be atleast 1")
 	private Integer planterStock;
 	
-	@Size(min=30,max=500, message = "Planter cost is between 30 to 500")
+//	@Size(min=30,max=500, message = "Planter cost is between 30 to 500")
 	private Integer planterCost;
 	
 //	@OneToMany
