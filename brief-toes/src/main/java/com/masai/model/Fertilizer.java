@@ -35,6 +35,6 @@ public class Fertilizer {
     @Min(value = 0, message = "Fertilizer's stock can't be negative")
     private Integer fertilizerStock;
 
-    @Size(min=100,max=2000, message = "Fertilisers are available between 100 to 2000")
+//    @Size(min=0,max=2000, message = "Fertilisers are available between 100 to 2000")
     private Integer fertilizerCost;
 }
