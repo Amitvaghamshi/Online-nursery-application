@@ -38,18 +38,11 @@ public class SeedController {
 	private PlanterService planterService;
 		
 	
-	@PostMapping("/{adminID}/add")
-	public ResponseEntity<Seed> saveNewSeed(@Valid @RequestBody Seed seed
-			,@PathVariable Integer adminID)
+	@PostMapping("/add")
+	public ResponseEntity<Seed> saveNewSeed(@Valid @RequestBody Seed seed)
 			throws AdminException,SeedException{
 		
-		Seed savedSeed = null;
-		
-		if(adminID==1111||adminID==2222||adminID==3333||adminID==4444) 
-		savedSeed = seedService.addSeed(seed);
-		
-		else
-		throw new AdminException("You are not an admin");
+		Seed savedSeed =seedService.addSeed(seed);
 				
 		return new ResponseEntity<Seed>(savedSeed, HttpStatus.CREATED);
 	}

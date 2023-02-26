@@ -57,11 +57,12 @@ public class Customer {
 	   @JoinTable(name = "customer_addresses",joinColumns = @JoinColumn(columnDefinition = "customer_id"))
 	   private List<Address> addresses=new ArrayList<>();
 	   
-	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
+	   @JsonIgnore
+	   @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
 	   private List<Orders> orders=new ArrayList<Orders>();
 	   
 	   @JsonIgnore
-	   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer_cart")
+	   @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer_cart")
 	   private List<Cart> cart_iteams=new ArrayList<Cart>();
 	   
 }
