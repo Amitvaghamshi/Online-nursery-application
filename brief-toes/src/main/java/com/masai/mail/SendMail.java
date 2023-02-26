@@ -27,8 +27,8 @@ public class SendMail {
 	        properties.put("mail.smtp.port", "587");
 	        properties.put("mail.smtp.host", "smtp.gmail.com");
 
-	        final  String username = "amitvaghamshi123@gmail.com";
-	        final String  password = "skytrrnmswkfxpfx";
+	        final  String username = "tinygrowindia@gmail.com";
+	        final String  password = "qyhqowfdqrxyvvsw";
 
 
 	        //session

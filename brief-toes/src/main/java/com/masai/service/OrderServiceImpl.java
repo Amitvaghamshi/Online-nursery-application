@@ -91,7 +91,7 @@ public class OrderServiceImpl implements OrderService{
 			printwriter.flush();
 			printwriter.close();
 			
-			boolean ms= SendMail.sendEmail( customer.getCustomerEmail(),"amitvaghamshi123@gmail.com", "Order Placed SucessFully", "Thank you for shopping at NurseryNow !",f);
+			boolean ms= SendMail.sendEmail( customer.getCustomerEmail(),"amitvaghamshi123@gmail.com", "Order Placed SucessFully", "Thank you for shopping at Tiny Grow !",f);
 			System.out.println(ms);
 			
 		} catch (Exception e) {
