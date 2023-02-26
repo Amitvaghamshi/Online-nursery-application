@@ -17,6 +17,7 @@ The Role of Administrator is:
 2. Seeds Management
 3. Planters Management
 4. Customer Management
+5. Fertilizer Management
 
 The Role of a Customer is: 
 1. Customer should be able to view the list of Plants , Seeds , Planters.
