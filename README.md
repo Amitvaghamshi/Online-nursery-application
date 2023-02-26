@@ -10,8 +10,7 @@ Overall, an online nursery application provides a convenient and efficient way f
 
 There are 2 users in the system:
 1. Administrator 
-2.Customer
-
+2. Customer
 
 The Role of Administrator is: 
 1. Plants Management 
@@ -19,9 +18,6 @@ The Role of Administrator is:
 3. Planters Management
 4. Customer Management
 
-
 The Role of a Customer is: 
 1. Customer should be able to view the list of Plants , Seeds , Planters.
 2. Customer should be able to buy order desired plants, seeds, planters .
-
-
