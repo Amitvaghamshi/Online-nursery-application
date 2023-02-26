@@ -1,6 +1,8 @@
-# Tiny Grow  ![WhatsApp Image 2023-02-26 at 11 10 31 PM](https://user-images.githubusercontent.com/70317048/221426929-5abc2ae0-dff6-429e-97da-5a7113eeda4d.jpeg)
+# Tiny Grow 
 
 Online Plant Nursery Application
+
+ ![WhatsApp Image 2023-02-26 at 11 10 31 PM](https://user-images.githubusercontent.com/70317048/221426929-5abc2ae0-dff6-429e-97da-5a7113eeda4d.jpeg)
 
 Domain Description:
 An online nursery application is a platform that provides an online marketplace for buying plants and gardening supplies. It enables users to purchase a wide variety of plants, seeds, planter, and accessories for gardening from the convenience of their own home.
