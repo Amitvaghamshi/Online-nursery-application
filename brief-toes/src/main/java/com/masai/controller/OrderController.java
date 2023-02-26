@@ -24,7 +24,7 @@ import com.masai.service.OrderService;
 
  
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/orders") 
 public class OrderController {
 	
 	   @Autowired

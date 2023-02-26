@@ -56,10 +56,11 @@ public class OrderServiceImpl implements OrderService{
 		
 		cartRepository.delete(actcart);
 		
-		Orders order=new Orders();
-		
+		 Orders order=new Orders();
 		 order.setCost(cart.getCost());
-		// order.setAddress(customer.getAddresses());
+		 if(customer.getAddresses()!=null) {
+			 order.setAddress(customer.getAddresses().get(0));
+		 }
 		 order.setQuantity(cart.getQuantity());
 		 order.setOrderType(cart.getOrderType());
 		 order.setTotalCost(cart.getCost()*cart.getQuantity());
@@ -91,7 +92,7 @@ public class OrderServiceImpl implements OrderService{
 			printwriter.flush();
 			printwriter.close();
 			
-			boolean ms= SendMail.sendEmail( customer.getCustomerEmail(),"amitvaghamshi123@gmail.com", "Order Placed SucessFully", "Thank you for shopping at Tiny Grow !",f);
+		boolean ms= SendMail.sendEmail( customer.getCustomerEmail(),"amitvaghamshi123@gmail.com", "Order Placed Sucessfully", "Thank you for shopping at Tiny Grow`  !",f);
 			System.out.println(ms);
 			
 		} catch (Exception e) {

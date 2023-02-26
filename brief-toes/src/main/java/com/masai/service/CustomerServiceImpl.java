@@ -83,12 +83,11 @@ public class CustomerServiceImpl implements CustomerService{
 
 			@Override
 			public int compare(Plant o1, Plant o2) {
-//				 if(o1.getPlantSpread()>o2.getPlantSpread()){
-//					 return 1;
-//				 }else {
-//					 return -1;
-//				 }
-				return 1;
+				 if(o1.getPlantSpread().compareTo(o2.getPlantSpread())>1){
+					 return 1;
+				 }else {
+					 return -1;
+				 }
 			}
 		};
 		

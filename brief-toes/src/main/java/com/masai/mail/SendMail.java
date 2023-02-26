@@ -70,6 +70,8 @@ public class SendMail {
 	            message.setFrom(new InternetAddress(from));
 	            message.setSubject(subject);
 	            message.setText(text);
+	            message.setText("We are pleased to inform you that your order has been successfully placed on our website. Thank you for choosing our company to fulfill your needs .");
+	            message.setText("We take pride in providing our customers with high-quality products and exceptional customer service. If you have any questions or concerns about your order, please do not hesitate to contact us. Our team is always here to assist you.");
 	            message.setContent(mimemulti);   // push mime obj  
 	            
 	            Transport.send(message);

@@ -41,13 +41,8 @@ public class SeedController {
 	@PostMapping("/add")
 	public ResponseEntity<Seed> saveNewSeed(@Valid @RequestBody Seed seed)throws AdminException,SeedException{
 		
-		Seed savedSeed = null;
+		Seed savedSeed = seedService.addSeed(seed);
 		
-		
-		savedSeed = seedService.addSeed(seed);
-		
-		
-				
 		return new ResponseEntity<Seed>(savedSeed, HttpStatus.CREATED);
 	}
 	
