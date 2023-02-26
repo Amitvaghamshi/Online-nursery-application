@@ -2,7 +2,7 @@
 Online Plant Nursery Application
 
 Domain Description:
-An online nursery application is a platform that provides an online marketplace for buying and selling plants and gardening supplies. It enables users to purchase a wide variety of plants, seeds, planter, and accessories for gardening from the convenience of their own home.
+An online nursery application is a platform that provides an online marketplace for buying plants and gardening supplies. It enables users to purchase a wide variety of plants, seeds, planter, and accessories for gardening from the convenience of their own home.
 
 The application typically has features that allow users to search for specific plants or products, browse through various categories of plants and products, and read detailed descriptions and reviews before making a purchase. Additionally, the application may offer personalized recommendations based on a user's past purchases or browsing history.
 
