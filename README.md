@@ -26,3 +26,7 @@ The Role of a Customer is:
 # Flow Chart
 ![FlowChart](https://user-images.githubusercontent.com/70317048/221420678-15d28e2b-e437-471f-9d70-2cf0a22c4938.png)
 
+# ER-Diagram
+![ER-Diagram](https://user-images.githubusercontent.com/70317048/221421852-46fe88ce-4d94-4daa-b4d0-50703b56eb9c.jpeg)
+
+
