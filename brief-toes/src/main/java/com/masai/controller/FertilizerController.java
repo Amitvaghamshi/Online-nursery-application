@@ -32,7 +32,7 @@ public class FertilizerController {
     }
 
     @PutMapping("/{adminID}/update")
-    public ResponseEntity<Fertilizer> updateSeed(@Valid @RequestBody Fertilizer fertilizer, @PathVariable Integer adminID) throws AdminException, FertilizerNotFoundException {
+    public ResponseEntity<Fertilizer> updateFertilizer(@Valid @RequestBody Fertilizer fertilizer, @PathVariable Integer adminID) throws AdminException, FertilizerNotFoundException {
         Fertilizer updatedFertilizer = null;
         if(adminID==1111||adminID==2222||adminID==3333||adminID==4444)
             updatedFertilizer = fertilizerService.updateFertilizer(fertilizer);
