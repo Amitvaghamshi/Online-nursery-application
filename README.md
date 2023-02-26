@@ -2,8 +2,6 @@
 
 Online Plant Nursery Application
 
- ![WhatsApp Image 2023-02-26 at 11 10 31 PM](https://user-images.githubusercontent.com/70317048/221426929-5abc2ae0-dff6-429e-97da-5a7113eeda4d.jpeg)
-
 Domain Description:
 An online nursery application is a platform that provides an online marketplace for buying plants and gardening supplies. It enables users to purchase a wide variety of plants, seeds, planter, and accessories for gardening from the convenience of their own home.
 
@@ -32,4 +30,8 @@ The Role of a Customer is:
 # ER-Diagram
 ![ER-Diagram](https://user-images.githubusercontent.com/70317048/221421852-46fe88ce-4d94-4daa-b4d0-50703b56eb9c.jpeg)
 
-
+# Swagger
+![1st](https://user-images.githubusercontent.com/70317048/221427430-36449f55-e5bb-4b15-953a-920c35d1447f.png)
+![2nd](https://user-images.githubusercontent.com/70317048/221427435-4303b67f-a07b-41d6-8bfd-fc282618734b.png)
+![3rd](https://user-images.githubusercontent.com/70317048/221427437-d7863ff5-750a-4bb9-9321-3a9f9ce5de5d.png)
+![4th](https://user-images.githubusercontent.com/70317048/221427447-246fdc0d-7753-42e3-8472-a182d0b9062c.png)
