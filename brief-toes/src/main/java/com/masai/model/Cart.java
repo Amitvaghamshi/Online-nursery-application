@@ -40,6 +40,7 @@ public class Cart {
 	@NotNull
 	@Min(value = 0,message = "order amount can not be less than 0")
 	private Integer cost;
+	private String description;
 	private final LocalDateTime timeStamp=LocalDateTime.now();
 	
 	@ManyToOne()

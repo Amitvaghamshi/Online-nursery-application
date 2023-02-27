@@ -83,9 +83,9 @@ public class CustomerController {
 	   
 	   //   Cart service
 	   
-	   @PostMapping(value =  "/carts/{id}" ,consumes = MediaType.APPLICATION_JSON_VALUE)
-	   public ResponseEntity<Cart> addtoCartHandler(@Valid @RequestBody Cart cart, @PathVariable("id") Integer id) throws CartException, CustomerException{
-		     Cart ct=cartcotroller.addtoCart(id, cart);
+	   @PostMapping(value =  "/carts/{customerId}/{productId}" ,consumes = MediaType.APPLICATION_JSON_VALUE)
+	   public ResponseEntity<Cart> addtoCartHandler(@Valid @RequestBody Cart cart, @PathVariable("customerId") Integer id,@PathVariable("productId") Integer productId) throws CartException, CustomerException{
+		     Cart ct=cartcotroller.addtoCart(id, cart,productId);
 		   
 		    return new ResponseEntity<>(ct,HttpStatus.CREATED);
 	   }

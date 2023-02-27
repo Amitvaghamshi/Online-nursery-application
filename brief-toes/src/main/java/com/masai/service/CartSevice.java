@@ -6,6 +6,6 @@ import com.masai.model.Cart;
 
 public interface CartSevice {
 
- 	public Cart addtoCart(Integer customerId, Cart cart) throws CartException, CustomerException;
 	public Cart removeFromCart(Integer customerId, Integer orderID)  throws CartException, CustomerException;
+	Cart addtoCart(Integer customerId, Cart cart, Integer productId) throws CartException, CustomerException;
 }

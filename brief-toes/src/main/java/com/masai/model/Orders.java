@@ -41,8 +41,10 @@ public class Orders {
 	private final LocalDateTime timeStamp=LocalDateTime.now();
 	private String paymentType;
 	private Integer totalCost;
+	private String description;
 	@Embedded
 	private Address address;
+	
 	
 	@ManyToOne
 	@JsonIgnore

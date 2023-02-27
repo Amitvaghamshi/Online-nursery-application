@@ -9,8 +9,16 @@ import com.masai.exceptions.CartException;
 import com.masai.exceptions.CustomerException;
 import com.masai.model.Cart;
 import com.masai.model.Customer;
+import com.masai.model.Fertilizer;
+import com.masai.model.Plant;
+import com.masai.model.Planter;
+import com.masai.model.Seed;
 import com.masai.repository.CartRepository;
 import com.masai.repository.CustomerRepository;
+import com.masai.repository.FertilizerRepository;
+import com.masai.repository.PlantRepository;
+import com.masai.repository.PlanterRepository;
+import com.masai.repository.SeedRepository;
 
 
 @Service
@@ -22,15 +30,83 @@ public class CartServiceImpl implements CartSevice{
 	@Autowired
 	private CartRepository cartRepository;
 	
+	@Autowired
+	private SeedRepository seedRepository;
+	
+	@Autowired
+	private PlantRepository plantRepository; 
+	
+	@Autowired
+	private PlanterRepository planterRepository;
+	
+	@Autowired
+	private FertilizerRepository fertilizerRepo;
+	
+	
+	
 
 	@Override
-	public Cart addtoCart(Integer customerId,Cart cart) throws CartException ,CustomerException{
+	public Cart addtoCart(Integer customerId,Cart cart,Integer productId) throws CartException ,CustomerException{
 		
 		Optional<Customer> customeropt=customerRepository.findById(customerId);
 		
 		
 		if(!customeropt.isPresent()) {
 			 throw new CustomerException("Customer Not found with id :"+customerId);
+		}
+		
+		System.out.println();
+		
+		if(cart.getOrderType().toString().equals("PLANT")){
+			Plant plant=plantRepository.findById(productId).get();
+			cart.setDescription(plant+"");
+			
+			// for quantity;
+			Integer q=plant.getPlantStock()-cart.getQuantity();
+			if(q<0) {
+				throw new CartException("Sufficient quantity is not avalable");
+			}
+			plant.setPlantStock(q);
+			plantRepository.save(plant);
+			
+		}else if(cart.getOrderType().toString().equals("SEED")){
+			Seed seed=seedRepository.findById(productId).get();
+			cart.setDescription(seed+"");
+			
+			// for quantity;
+			Integer q=seed.getSeedsStock()-cart.getQuantity();
+			if(q<0) {
+				throw new CartException("Sufficient quantity is not avalable");
+			}
+			seed.setSeedsStock(q);
+			seedRepository.save(seed);
+			
+		}else if(cart.getOrderType().toString().equals("PLANTERS")) {
+			Planter planter =planterRepository.findById(productId).get();
+			cart.setDescription(planter+"");
+			
+			// for quantity;
+			Integer q=planter.getPlanterStock()-cart.getQuantity();
+			if(q<0) {
+				throw new CartException("Sufficient quantity is not avalable");
+			}
+			planter.setPlanterStock(q);
+			planterRepository.save(planter);
+			
+		}else if(cart.getOrderType().toString().equals("FERTILIZER")) {
+			  Fertilizer fz=fertilizerRepo.findById(productId).get();
+			  cart.setDescription(fz+"");
+			  
+			// for quantity;
+			Integer q=fz.getFertilizerStock()-cart.getQuantity();
+			if(q<0) {
+				throw new CartException("Sufficient quantity is not avalable");
+			}
+			fz.setFertilizerStock(q);
+			fertilizerRepo.save(fz);
+			  
+		}else {
+			throw new CartException("Product not found with Id :"+productId);
 		}
 		
 		Customer customer=customeropt.get();
@@ -75,5 +151,7 @@ public class CartServiceImpl implements CartSevice{
 		
 	}
 	
+	//  =>>>>>>>>>>>   HELPER METHOD   <==============
 	
+	//private 
 }

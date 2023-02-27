@@ -35,12 +35,9 @@ public class adminController {
 	private adminCustomer adminService;
 	
 	@PostMapping("/admin")
-	public ResponseEntity<Customer> saveNewCustomer(@RequestBody Customer customer) throws CustomerException{
+	public ResponseEntity<Customer> saveNewCustomer(@Valid @RequestBody Customer customer) throws CustomerException{
 		
-		Customer savedCustomer = null;
-		
-			savedCustomer = adminService.addCustomer(savedCustomer);
-	
+		 Customer savedCustomer = adminService.addCustomer(customer);
 		
 		return new ResponseEntity<Customer>(savedCustomer, HttpStatus.CREATED);
 	}

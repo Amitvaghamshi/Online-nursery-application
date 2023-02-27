@@ -54,17 +54,18 @@ public class OrderServiceImpl implements OrderService{
 		}
 	
 		
-		cartRepository.delete(actcart);
+		 cartRepository.delete(actcart);
 		
 		 Orders order=new Orders();
 		 order.setCost(cart.getCost());
-		 if(customer.getAddresses()!=null) {
+		 if(!customer.getAddresses().isEmpty()) {
 			 order.setAddress(customer.getAddresses().get(0));
 		 }
 		 order.setQuantity(cart.getQuantity());
 		 order.setOrderType(cart.getOrderType());
 		 order.setTotalCost(cart.getCost()*cart.getQuantity());
 		 order.setPaymentType(payment);
+		 order.setDescription(cart.getDescription());
 		
 		
 		order.setCustomer(customer);
@@ -87,6 +88,7 @@ public class OrderServiceImpl implements OrderService{
 			printwriter.println("Total Quantity :" + order.getQuantity());
 			printwriter.println("Total Cost :"+order.getTotalCost());
 			printwriter.println("Payment Type :" +order.getPaymentType());
+			printwriter.println("Description :"+order.getDescription());
 			printwriter.println("Address :"+order.getAddress());
 		    
 			printwriter.flush();
@@ -163,5 +165,10 @@ public class OrderServiceImpl implements OrderService{
 			return  orders;
 		}
 
+		  
+		
+	
 
 }
+
+
