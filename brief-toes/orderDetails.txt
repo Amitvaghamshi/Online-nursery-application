@@ -2,9 +2,9 @@ amit Thank you for the Order
 This is your Order Details 
 -----------------------------
 Order Type : PLANT
-Cost :100
-Total Quantity :15
-Total Cost :1500
+Cost :50
+Total Quantity :10
+Total Cost :500
 Payment Type :paytm
-Description :Plant(plantId=1, plantHeight=200, plantSpread=2ft, commonName=rose, bloomTime=2day, medicalOrCulinaryUse=yes, difficultyLevel=high, temprature=20C, typeOfPlant=Cis, plantDescription=good, plantStock=259, plantCost=200)
+Description :Plant(plantId=1, plantHeight=200, plantSpread=2ft, commonName=rose, bloomTime=2day, medicalOrCulinaryUse=yes, difficultyLevel=high, temprature=20C, typeOfPlant=Cis, plantDescription=good, plantStock=214, plantCost=200)
 Address :Address(addId=21, houseNo=32, colony=42, city=amreli, state=gujrat, pincode=365640)

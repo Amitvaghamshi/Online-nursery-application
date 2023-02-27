@@ -14,7 +14,7 @@ import jakarta.mail.internet.MimeMultipart;
 public class SendMail {
 
 	
-	 public static boolean sendEmail(String to, String from, String subject, String text,File file) {
+	 public static boolean sendEmail(String to, String from, String subject, String text,File file){
 	        boolean flag = false;
 
 	        //logic
@@ -49,7 +49,7 @@ public class SendMail {
    	          MimeBodyPart textmime=new MimeBodyPart();
    	          MimeBodyPart filemime=new MimeBodyPart();
    	        
-   	             ///  File file=new File("amit.txt");
+   	            ///  File file=new File("amit.txt");
    	          
    	            filemime.attachFile(file);
        	        textmime.setText(text+"  We are pleased to inform you that your order has been successfully placed on our website. Thank you for choosing our company to fulfill your needs . We take pride in providing our customers with high-quality products and exceptional customer service. If you have any questions or concerns about your order, please do not hesitate to contact us. Our team is always here to assist you.");

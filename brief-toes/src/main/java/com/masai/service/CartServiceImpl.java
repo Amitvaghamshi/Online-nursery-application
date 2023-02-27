@@ -59,7 +59,7 @@ public class CartServiceImpl implements CartSevice{
 		
 		if(cart.getOrderType().toString().equals("PLANT")){
 			Plant plant=plantRepository.findById(productId).get();
-			cart.setDescription(plant+"");
+			cart.setDescription(" plantHeight :"+plant.getPlantHeight()+" plantSpread :"+plant.getPlantSpread()+" commonName :"+plant.getCommonName()+" bloomTime :"+plant.getBloomTime()+" typeOfPlant :"+plant.getTypeOfPlant()+" plantDescription :"+plant.getPlantDescription());
 			
 			// for quantity;
 			Integer q=plant.getPlantStock()-cart.getQuantity();
@@ -71,7 +71,7 @@ public class CartServiceImpl implements CartSevice{
 			
 		}else if(cart.getOrderType().toString().equals("SEED")){
 			Seed seed=seedRepository.findById(productId).get();
-			cart.setDescription(seed+"");
+			cart.setDescription("commonName :"+seed.getCommonName()+" bloomTime :"+seed.getBloomTime()+" watering :"+seed.getWatering()+" temperature :"+seed.getTemperature()+" seedsDescription :"+seed.getSeedsDescription());
 			
 			// for quantity;
 			Integer q=seed.getSeedsStock()-cart.getQuantity();
@@ -83,7 +83,7 @@ public class CartServiceImpl implements CartSevice{
 			
 		}else if(cart.getOrderType().toString().equals("PLANTERS")) {
 			Planter planter =planterRepository.findById(productId).get();
-			cart.setDescription(planter+"");
+			cart.setDescription(" planterHeight :"+planter.getPlanterHeight()+" planterCapacity :"+planter.getPlanterCapacity()+" drainageHoles :"+planter.getDrainageHoles()+" planterColor :"+planter.getPlanterColor()+" planterShape :"+planter.getPlanterShape());
 			
 			// for quantity;
 			Integer q=planter.getPlanterStock()-cart.getQuantity();
@@ -95,7 +95,7 @@ public class CartServiceImpl implements CartSevice{
 			
 		}else if(cart.getOrderType().toString().equals("FERTILIZER")) {
 			  Fertilizer fz=fertilizerRepo.findById(productId).get();
-			  cart.setDescription(fz+"");
+			  cart.setDescription(" commonName :"+fz.getCommonName()+" brand :"+fz.getBrand()+" description :"+fz.getDescription()+" quantityPerPacket :"+fz.getQuantityPerPacket()+" brand :"+fz.getBrand());
 			  
 			// for quantity;
 			Integer q=fz.getFertilizerStock()-cart.getQuantity();
@@ -151,7 +151,5 @@ public class CartServiceImpl implements CartSevice{
 		
 	}
 	
-	//  =>>>>>>>>>>>   HELPER METHOD   <==============
 	
-	//private 
 }
