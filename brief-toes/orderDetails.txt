@@ -1,10 +1,10 @@
 amit Thank you for the Order 
 This is your Order Details 
 -----------------------------
-Order Type : PLANT
-Cost :50
-Total Quantity :10
-Total Cost :500
-Payment Type :paytm
-Description :Plant(plantId=1, plantHeight=200, plantSpread=2ft, commonName=rose, bloomTime=2day, medicalOrCulinaryUse=yes, difficultyLevel=high, temprature=20C, typeOfPlant=Cis, plantDescription=good, plantStock=214, plantCost=200)
-Address :Address(addId=21, houseNo=32, colony=42, city=amreli, state=gujrat, pincode=365640)
+Order Type : SEED
+Cost :699
+Total Quantity :1
+Total Cost :699
+Payment Type :166
+Description :commonName :moghra bloomTime :2month watering :3days temperature :20C seedsDescription :good
+Address :Address(addId=12, houseNo=1, colony=janki park, city=surat, state=gujrat, pincode=347644)

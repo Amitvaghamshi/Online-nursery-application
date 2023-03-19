@@ -72,6 +72,15 @@
     <version>2.0.2</version>
 </dependency>
 
+
+<!-- https://mvnrepository.com/artifact/com.thetransactioncompany/cors-filter -->
+<dependency>
+    <groupId>com.thetransactioncompany</groupId>
+    <artifactId>cors-filter</artifactId>
+    <version>2.10</version>
+</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -90,5 +99,10 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<filter-mapping>
+        <filter-name>CORS</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </project>
